@@ -1,0 +1,163 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+    font-size: 30px; /* Increased base font size */
+}
+
+.container {
+    max-width: 1200px; /* Increased width */
+    margin: 60px auto; /* More margin on top/bottom */
+    padding: 60px; /* More internal padding */
+    background: white;
+    border-radius: 16px; /* Slightly rounder corners */
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #1c7ed6;
+    margin-bottom: 30px;
+    font-size: 4rem; /* Significantly larger heading */
+    font-weight: 700;
+}
+
+.status-message {
+    padding: 16px; /* Increased padding */
+    border-radius: 8px;
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 16px; /* Larger text */
+}
+
+.status-message.success {
+    background-color: #e8f5e8;
+    border: 1px solid #c8e6c9;
+    color: #388e3c;
+}
+
+.status-message.error {
+    background-color: #ffebee;
+    border: 1px solid #ffcdd2;
+    color: #c62828;
+}
+
+.upload-card {
+    background: #f8f9fa;
+    border: 2px dashed #d1d5da; /* Thicker border */
+    border-radius: 16px;
+    padding: 40px; /* Increased padding */
+    text-align: center;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+#uploadArea.highlighted {
+    border-color: #1c7ed6;
+    background-color: #f0f3f5;
+}
+
+.upload-icon {
+    margin-bottom: 20px;
+    color: #1c7ed6;
+    transform: scale(1.2); /* Makes any icon inside larger */
+}
+
+.upload-text {
+    font-size: 18px; /* Larger text */
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.upload-text small {
+    font-size: 14px; /* Larger subtext */
+    color: #777;
+    display: block;
+    margin-top: 5px;
+}
+
+.btn {
+    padding: 20px 40px; /* Bigger buttons */
+    border: none;
+    border-radius: 25px;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-green {
+    background-color: #8bc34a;
+    color: white;
+}
+
+.btn-green:hover {
+    background-color: #7ab142;
+}
+
+.btn-gray {
+    background-color: #d1d5da;
+    color: #333;
+    margin-top: 20px;
+    width: 100%;
+    padding: 16px; /* Taller button */
+    font-size: 18px; /* Larger text */
+    border-radius: 8px; /* Matching input radius */
+}
+
+.btn-gray:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.info-note {
+    background: #e3f2fd;
+    padding: 20px; /* More spacious */
+    border-radius: 10px;
+    margin-bottom: 35px;
+    font-size: 16px;
+    color: #1565c0;
+    border-left: 6px solid #1565c0; /* Thicker accent border */
+}
+
+.info-note strong {
+    color: #1565c0;
+}
+
+.info-note a {
+    color: #1565c0;
+    text-decoration: underline;
+}
+
+.generate-section {
+    margin-top: 40px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #333;
+    font-size: 18px; /* Larger label */
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 25px; /* Taller input field */
+    border: 2px solid #ddd; /* Thicker border */
+    border-radius: 10px;
+    font-size: 22px; /* Larger text inside input */
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+

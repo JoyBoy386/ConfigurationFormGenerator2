@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hardware + Assignment Extractor</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #eef2f7; color: #333; }
+        .container { max-width: 600px; margin: 40px auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        
+        /* Logo Styling */
+        .logo-wrapper { text-align: center; margin-bottom: 20px; }
+        .logo-wrapper img { max-width: 180px; height: auto; }
+
+        h2 { text-align: center; color: #2c3e50; margin-bottom: 10px; font-weight: 600; }
+        .subtitle { text-align: center; color: #7f8c8d; margin-bottom: 30px; font-size: 0.9em; }
+
+        .upload-card { border: 2px dashed #cbd5e0; padding: 25px; margin-bottom: 25px; border-radius: 10px; background: #f8fafc; transition: all 0.2s; }
+        .upload-card:hover { border-color: #007bff; background: #fff; }
+        .upload-card h3 { margin-top: 0; color: #2d3748; font-size: 1.1em; }
+        
+        .btn { display: block; width: 100%; padding: 12px; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: 600; margin-top: 15px; transition: background 0.2s; }
+        .btn-blue { background: #3182ce; color: white; }
+        .btn-blue:hover { background: #2b6cb0; }
+        .btn-green { background: #38a169; color: white; }
+        .btn-green:hover { background: #2f855a; }
+        
+        .status-message { padding: 15px; margin-bottom: 20px; border-radius: 6px; text-align: center; }
+        .success { background: #c6f6d5; color: #22543d; border: 1px solid #9ae6b4; }
+        .error { background: #fed7d7; color: #742a2a; border: 1px solid #feb2b2; }
+        
+        input[type="file"] { width: 100%; padding: 8px; background: white; border: 1px solid #e2e8f0; border-radius: 4px; }
+        
+        .db-info { text-align: center; margin-top: 20px; font-size: 0.9em; color: #718096; border-top: 1px solid #e2e8f0; padding-top: 20px; }
+        .db-info a { color: #e53e3e; text-decoration: none; font-weight: 600; }
+        .db-info a:hover { text-decoration: underline; }
+        .badge { background: #ecc94b; color: #744210; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-wrapper">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Company Logo">
+        </div>
+
+        <h2>Configuration Form Generator</h2>
+        <p class="subtitle">Automated Asset Tagging & Report Generation</p>
+
+        {% if error %}
+            <div class="status-message error">{{ error }}</div>
+        {% endif %}
+        {% if message %}
+            <div class="status-message success">{{ message }}</div>
+        {% endif %}
+
+        <form action="{{ url_for('upload_excel') }}" method="POST" enctype="multipart/form-data">
+            <div class="upload-card">
+                <h3> Step 1: Upload Master List (.xlsx)</h3>
+                <p style="font-size: 0.9em; color: #666; margin-bottom: 15px;">
+                    Upload the Excel file containing Asset IDs and "Yellow Notes" (Comments).
+                </p>
+                <input type="file" name="file" accept=".xlsx" required>
+                <button type="submit" class="btn btn-blue"> Upload Database</button>
+            </div>
+        </form>
+
+        <form action="{{ url_for('upload_html') }}" method="POST" enctype="multipart/form-data">
+            <div class="upload-card">
+                <h3> Step 2: Upload Hardware Report (.html)</h3>
+                <p style="font-size: 0.9em; color: #666; margin-bottom: 15px;">
+                    Upload the HTML report generated from the laptop.
+                </p>
+                <input type="file" name="file" accept=".html,.htm" required>
+                <button type="submit" class="btn btn-green"> Generate Excel Form</button>
+            </div>
+        </form>
+
+        <div class="db-info">
+            <p>Database Status: <span class="badge">{{ count }} Assets Memorized</span></p>
+            <p>
+                <a href="/clear_db" onclick="return confirm('Are you sure you want to delete all saved data? This cannot be undone.')">
+                     Clear Saved Database
+                </a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
